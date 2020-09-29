@@ -7,6 +7,8 @@ import { PreviewPageComponent } from './preview-page/preview-page.component';
 import { ScorePageComponent } from './score-page/score-page.component';
 import { StartPageComponent } from './start-page/start-page.component';
 import { QuestionPageComponent } from './question-page/question-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
 
 const appRoutes: Routes = [
   { path: '', component: StartPageComponent },
@@ -23,7 +25,13 @@ const appRoutes: Routes = [
     StartPageComponent,
     QuestionPageComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, RouterModule.forRoot(appRoutes)],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    RouterModule.forRoot(appRoutes),
+    BrowserAnimationsModule,
+    MatButtonModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
