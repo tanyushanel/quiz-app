@@ -15,6 +15,7 @@ const appRoutes: Routes = [
   { path: 'question', component: QuestionPageComponent },
   { path: 'preview', component: PreviewPageComponent },
   { path: 'score', component: ScorePageComponent },
+  { path: '**', redirectTo: '/' },
 ];
 
 @NgModule({
