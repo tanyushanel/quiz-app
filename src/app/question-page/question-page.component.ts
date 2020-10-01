@@ -1,5 +1,5 @@
 import { QuizzService, Question } from '../quizz.service';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
@@ -9,23 +9,12 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class QuestionPageComponent implements OnInit {
   question: BehaviorSubject<Question>;
+  value: string;
 
-  constructor(private quizzService: QuizzService) {}
+  constructor(public quizzService: QuizzService) {}
 
   ngOnInit(): void {
     this.question = this.quizzService.currentQuestion;
-  }
-
-  moveToNext(): void {
-    this.quizzService.moveToNextQuestion();
-  }
-
-  onMoveToPrevClick(): void {
-    this.quizzService.moveToPrevQuestion();
-  }
-
-  onMoveToNextClick(): void {
-    this.quizzService.moveToNextQuestion();
   }
 
   get isNextButtonDisabled(): boolean {
@@ -36,7 +25,24 @@ export class QuestionPageComponent implements OnInit {
     return this.quizzService.isFirstQuestion;
   }
 
+  get isValueSelected(): boolean {
+    if (this.value) {
+      return true;
+    }
+    return false;
+  }
+
+  onMoveToPrevClick(): void {
+    this.quizzService.moveToPrevQuestion();
+    this.value = this.quizzService.currentQuestion.value.choise;
+  }
+
+  onMoveToNextClick(): void {
+    this.quizzService.moveToNextQuestion();
+    this.value = this.quizzService.currentQuestion.value.choise;
+  }
+
   onSubmitQuestion(): void {
-    this.quizzService.submitQuestion();
+    this.quizzService.submitQuestion(this.value);
   }
 }

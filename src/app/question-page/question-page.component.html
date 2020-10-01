@@ -1,12 +1,13 @@
 <div class="quizz-container">
         <h3 class="question-text">{{question.value.text}}</h3>
 
-        <div *ngFor="let case of question.value.answers"
+        <div *ngFor="let case of question.value.answers; let ind = index"
              class="line"><input type="radio"
-                       id="val"
+                       [id]="'val'+ ind"
                        name="variant"
-                       value="case">
-                <label for="val">{{case}}</label>
+                       [value]="case"
+                       [(ngModel)]="value">
+                <label [for]="'val'+ ind">{{case}}</label>
         </div>
 
         <div class="button-block">
@@ -17,7 +18,8 @@
                         [disabled]="isPrevButtonDisabled"> &lt;&lt;Prew </button>
                 <button mat-raised-button
                         color="primary"
-                        (click)="onSubmitQuestion()">Submit</button>
+                        (click)="onSubmitQuestion()"
+                        [disabled]="!isValueSelected">Select</button>
                 <button mat-stroked-button
                         class="button next"
                         color="primary"

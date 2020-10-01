@@ -73,7 +73,8 @@ export class QuizzService {
     }
   }
 
-  submitQuestion(): void {
+  submitQuestion(choise): void {
+    this.currentQuestion.value.choise = choise;
     this.currentQuestion.value.submitted = true;
   }
 }

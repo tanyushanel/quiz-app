@@ -9,6 +9,7 @@ import { StartPageComponent } from './start-page/start-page.component';
 import { QuestionPageComponent } from './question-page/question-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   { path: '', component: StartPageComponent },
@@ -32,6 +33,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
     MatButtonModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
