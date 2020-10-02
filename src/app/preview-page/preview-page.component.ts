@@ -17,4 +17,8 @@ export class PreviewPageComponent implements OnInit {
   onSubmitResult(): void {
     //todo: redirect to results page
   }
+
+  goBack(): void {
+    window.history.back();
+  }
 }

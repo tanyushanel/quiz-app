@@ -10,7 +10,8 @@
                                [id]="'val'+ ind"
                                name="variant"
                                [value]="case"
-                               [(ngModel)]="selectedCase">
+                               [(ngModel)]="selectedCase"
+                               (ngModelChange)="onSelectQuestion()">
                         <label [for]="'val'+ ind">{{case}}</label>
                 </div>
         </div>
@@ -24,8 +25,7 @@
 
                 <button mat-raised-button
                         color="primary"
-                        (click)="onSelectQuestion()"
-                        [disabled]="!isValueSelected">Select</button>
+                        routerLink="/preview">Preview</button>
 
                 <button mat-stroked-button
                         class="button next"

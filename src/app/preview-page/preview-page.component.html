@@ -18,11 +18,15 @@
             </div>
         </div>
 
-
-
     </div>
 
-    <button mat-raised-button
-            color="primary"
-            (click)="onSubmitResult()">Submit</button>
+    <div class="button-block">
+        <button mat-stroked-button
+                color="primary"
+                (click)="goBack()">&lt;&lt;Back</button>
+        <button mat-raised-button
+                color="primary"
+                (click)="onSubmitResult()">Submit</button>
+    </div>
+
 </div>
