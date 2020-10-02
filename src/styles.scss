@@ -9,6 +9,22 @@ body {
   background-size: auto;
 }
 
+input,
+label {
+  display: inline-block;
+}
+
+label {
+  margin: 0.5rem 1rem;
+}
+
+
+
+.page {
+  color: #808080;
+  margin-bottom: 1rem;
+}
+
 .quizz-container {
   text-align: center;
   margin: 20vh auto;
@@ -21,6 +37,10 @@ body {
   padding: 2rem;
 }
 
-.button-block {
-  margin-top: 1.5rem;
+.question-container {
+  margin-bottom: 1.5rem;
+}
+
+.line {
+  text-align: left;
 }

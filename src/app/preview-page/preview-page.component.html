@@ -1,5 +1,28 @@
 <div class="quizz-container">
     <h2>Check yourself, please</h2>
+
+
+    <div class="question-container"
+         *ngFor="let item of questionList">
+
+        <h3 class="question-text">{{ questionList.indexOf(item) + 1 + '. ' +   item.text}}</h3>
+        <div class="question-container">
+            <div *ngFor="let case of item.answers; let ind = index"
+                 class="line">
+                <input type="radio"
+                       [id]="'val'+ ind"
+                       name="variant"
+                       [value]="case"
+                       [(ngModel)]="selectedCase">
+                <label [for]="'val'+ ind">{{case}}</label>
+            </div>
+        </div>
+
+
+
+    </div>
+
     <button mat-raised-button
-            color="primary">Submit</button>
+            color="primary"
+            (click)="onSubmitResult()">Submit</button>
 </div>

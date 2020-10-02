@@ -1,5 +1,5 @@
 import { QuizzService, Question } from '../quizz.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
@@ -8,8 +8,9 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./question-page.component.scss'],
 })
 export class QuestionPageComponent implements OnInit {
+  questionList: Question[] = this.quizzService.questions;
   question: BehaviorSubject<Question>;
-  value: string;
+  selectedCase: string;
 
   constructor(public quizzService: QuizzService) {}
 
@@ -26,7 +27,7 @@ export class QuestionPageComponent implements OnInit {
   }
 
   get isValueSelected(): boolean {
-    if (this.value) {
+    if (this.selectedCase) {
       return true;
     }
     return false;
@@ -34,15 +35,15 @@ export class QuestionPageComponent implements OnInit {
 
   onMoveToPrevClick(): void {
     this.quizzService.moveToPrevQuestion();
-    this.value = this.quizzService.currentQuestion.value.choise;
+    this.selectedCase = this.quizzService.currentQuestion.value.choise;
   }
 
   onMoveToNextClick(): void {
     this.quizzService.moveToNextQuestion();
-    this.value = this.quizzService.currentQuestion.value.choise;
+    this.selectedCase = this.quizzService.currentQuestion.value.choise;
   }
 
-  onSubmitQuestion(): void {
-    this.quizzService.submitQuestion(this.value);
+  onSelectQuestion(): void {
+    this.quizzService.selectQuestion(this.selectedCase);
   }
 }

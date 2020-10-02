@@ -1,13 +1,18 @@
 <div class="quizz-container">
-        <h3 class="question-text">{{question.value.text}}</h3>
 
-        <div *ngFor="let case of question.value.answers; let ind = index"
-             class="line"><input type="radio"
-                       [id]="'val'+ ind"
-                       name="variant"
-                       [value]="case"
-                       [(ngModel)]="value">
-                <label [for]="'val'+ ind">{{case}}</label>
+        <div class="page">{{ questionList.indexOf(question.value) + 1 + '/' + questionList.length }}</div>
+
+        <h3 class="question-text">{{ questionList.indexOf(question.value) + 1 + '. ' +   question.value.text}}</h3>
+        <div class="question-container">
+                <div *ngFor="let case of question.value.answers; let ind = index"
+                     class="line">
+                        <input type="radio"
+                               [id]="'val'+ ind"
+                               name="variant"
+                               [value]="case"
+                               [(ngModel)]="selectedCase">
+                        <label [for]="'val'+ ind">{{case}}</label>
+                </div>
         </div>
 
         <div class="button-block">
@@ -16,10 +21,12 @@
                         color="primary"
                         (click)="onMoveToPrevClick()"
                         [disabled]="isPrevButtonDisabled"> &lt;&lt;Prew </button>
+
                 <button mat-raised-button
                         color="primary"
-                        (click)="onSubmitQuestion()"
+                        (click)="onSelectQuestion()"
                         [disabled]="!isValueSelected">Select</button>
+
                 <button mat-stroked-button
                         class="button next"
                         color="primary"
