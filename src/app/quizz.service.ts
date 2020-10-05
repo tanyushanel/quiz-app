@@ -18,7 +18,7 @@ export class QuizzService {
       text: 'What is the capital of Great Britain?',
       answers: ['Minsk', 'Warsaw', 'Berlin', 'London'],
       submitted: false,
-      correct: 'Warsaw',
+      correct: 'London',
       choise: '',
     },
     {
@@ -43,22 +43,31 @@ export class QuizzService {
     this.questions[this.index]
   );
 
-  constructor() {
-    console.log('==== Create QuizzService =====');
-  }
+  constructor() {}
 
   get isLastQuestion(): boolean {
-    if (this.index === this.questions.length - 1) {
+    if (
+      this.questions.indexOf(this.currentQuestion.value) ===
+      this.questions.length - 1
+    ) {
       return true;
     }
     return false;
+  }
+
+  set isLastQuestion(value) {
+    this.isLastQuestion = value;
   }
 
   get isFirstQuestion(): boolean {
-    if (this.index === 0) {
+    if (this.questions.indexOf(this.currentQuestion.value) === 0) {
       return true;
     }
     return false;
+  }
+
+  set isFirstQuestion(value) {
+    this.isFirstQuestion = value;
   }
 
   moveToNextQuestion(): void {
@@ -81,6 +90,25 @@ export class QuizzService {
   }
 
   calcResults(): number {
-    return;
+    let result = 0;
+    for (const item of this.questions) {
+      if (item.choise === item.correct) {
+        result += 1;
+      }
+    }
+    return result;
+  }
+
+  refreshToStart(): void {
+    this.index = 0;
+    this.currentQuestion.next(this.questions[0]);
+    for (const item of this.questions) {
+      item.choise = '';
+    }
+  }
+
+  goBack(): void {
+    window.history.back();
+    this.currentQuestion.next(this.currentQuestion.value);
   }
 }

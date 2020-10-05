@@ -8,7 +8,6 @@ import { Question, QuizzService } from '../quizz.service';
 })
 export class PreviewPageComponent implements OnInit {
   questionList: Question[] = this.quizzService.questions;
-  selectedCase: string;
 
   constructor(private quizzService: QuizzService) {}
 
@@ -17,21 +16,15 @@ export class PreviewPageComponent implements OnInit {
   onSubmitResult(): void {}
 
   isAllSelected(): boolean {
-    for (let i = 0; i < this.questionList.length; i++) {
-      if (this.questionList[i].choise === '' || !this.questionList[i].choise) {
+    for (const item of this.questionList) {
+      if (item.choise === '' || !item.choise) {
         return false;
       }
     }
     return true;
   }
 
-  previewSelected(): void {
-    for (const item of this.questionList) {
-      // this.selectedCase = item.choise;
-    }
-  }
-
-  goBack(): void {
-    window.history.back();
+  onGoBack(): void {
+    this.quizzService.goBack();
   }
 }

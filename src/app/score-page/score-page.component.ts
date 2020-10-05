@@ -17,4 +17,8 @@ export class ScorePageComponent implements OnInit {
   get scoreResult(): number {
     return this.quizzService.calcResults();
   }
+
+  onRefreshToStart(): void {
+    this.quizzService.refreshToStart();
+  }
 }

@@ -1,10 +1,11 @@
 <div class="quizz-container">
     <h2>So, your score is </h2>
-    <p class="score">{{ scoreResult }}</p>
+    <p class="score">{{ scoreResult + ' / ' + questionList.length}}</p>
     <div class="button-block">
         <button mat-raised-button
                 color="primary"
-                routerLink="/start">Try again!</button>
+                routerLink="/start"
+                (click)="onRefreshToStart()">Try again!</button>
     </div>
 
 
