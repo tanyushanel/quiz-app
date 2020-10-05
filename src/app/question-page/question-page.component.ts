@@ -16,6 +16,7 @@ export class QuestionPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.question = this.quizzService.currentQuestion;
+    this.selectedCase = this.quizzService.currentQuestion.value.choise;
   }
 
   get isNextButtonDisabled(): boolean {

@@ -109,6 +109,5 @@ export class QuizzService {
 
   goBack(): void {
     window.history.back();
-    this.currentQuestion.next(this.currentQuestion.value);
   }
 }
