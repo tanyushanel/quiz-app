@@ -11,9 +11,9 @@
                  class="line">
                 <input type="radio"
                        [id]="'val'+ ind"
-                       name="variant"
+                       [name]="'variant' + questionList.indexOf(item)"
                        [value]="case"
-                       [(ngModel)]="selectedCase">
+                       [(ngModel)]="item.choise">
                 <label [for]="'val'+ ind">{{case}}</label>
             </div>
         </div>
@@ -26,7 +26,9 @@
                 (click)="goBack()">&lt;&lt;Back</button>
         <button mat-raised-button
                 color="primary"
-                (click)="onSubmitResult()">Submit</button>
+                (click)="onSubmitResult()"
+                routerLink="/score"
+                [disabled]="!isAllSelected()">Submit</button>
     </div>
 
 </div>

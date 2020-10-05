@@ -43,7 +43,9 @@ export class QuizzService {
     this.questions[this.index]
   );
 
-  constructor() {}
+  constructor() {
+    console.log('==== Create QuizzService =====');
+  }
 
   get isLastQuestion(): boolean {
     if (this.index === this.questions.length - 1) {

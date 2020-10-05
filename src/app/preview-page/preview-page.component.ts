@@ -14,8 +14,21 @@ export class PreviewPageComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSubmitResult(): void {
-    //todo: redirect to results page
+  onSubmitResult(): void {}
+
+  isAllSelected(): boolean {
+    for (let i = 0; i < this.questionList.length; i++) {
+      if (this.questionList[i].choise === '' || !this.questionList[i].choise) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  previewSelected(): void {
+    for (const item of this.questionList) {
+      // this.selectedCase = item.choise;
+    }
   }
 
   goBack(): void {
